@@ -1,0 +1,270 @@
+<!-- Dependencies & Styling -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Courier New', 'monospace'], },
+                colors: { emq: { orange: '#FF6B00', blue: '#002060', slate: '#0F172A', light: '#F8FAFC' } },
+                boxShadow: { 'premium': '0 20px 40px -15px rgba(0, 32, 96, 0.15)', 'glow': '0 0 20px rgba(255, 107, 0, 0.3)', }
+            }
+        }
+    }
+</script>
+
+<style>
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background-color: #f8fafc; font-family: 'Inter', sans-serif; color: #1f2937;}
+    .whatsapp-float {
+        position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+        background-color: #25d366; color: #FFF; border-radius: 50px;
+        text-align: center; font-size: 30px; box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+        z-index: 9999; display: flex; align-items: center; justify-content: center;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;
+    }
+    .whatsapp-float:hover { transform: scale(1.15) translateY(-5px); background-color: #128C7E; }
+    .footer-link:hover { color: #FF6B00; text-decoration: none; }
+    #billSection { transition: all 0.3s ease-in-out; }
+    .nav-item { cursor: pointer; position: relative; }
+    .nav-item::after {
+        content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+        background-color: #FF6B00; transition: width 0.3s ease;
+    }
+    .nav-item:hover::after { width: 100%; }
+    .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+    .thermal-paper { background-color: #ffffff; color: #000000; }
+    .thermal-edge-bottom {
+        position: absolute; bottom: -10px; left: 0; width: 100%; height: 10px;
+        background: linear-gradient(-45deg, transparent 33.333%, #ffffff 33.333%, #ffffff 66.667%, transparent 66.667%),
+                    linear-gradient(45deg, transparent 33.333%, #ffffff 33.333%, #ffffff 66.667%, transparent 66.667%);
+        background-size: 10px 20px; background-position: 0 -10px; z-index: 10;
+    }
+</style>
+
+<!-- Main Application Structure -->
+<nav class="bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 sticky top-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-end items-center space-x-8">
+        <div class="hidden md:flex space-x-8 font-semibold text-sm text-gray-500 uppercase tracking-wider">
+            <a onclick="scrollToSection('home')" class="nav-item hover:text-emq-blue transition">Home</a>
+            <a onclick="scrollToSection('products')" class="nav-item hover:text-emq-blue transition">Products</a>
+            <a onclick="scrollToSection('order')" class="nav-item hover:text-emq-blue transition">Order Now</a>
+        </div>
+        <button onclick="scrollToSection('order')" class="bg-emq-blue text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-900 transition shadow-lg text-sm tracking-wide" aria-label="Order Now">Book Delivery</button>
+    </div>
+</nav>
+
+<section id="home" class="relative overflow-hidden bg-slate-900 text-white py-24 lg:py-32">
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emq-blue/80 via-slate-900 to-slate-900"></div>
+        <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-emq-orange/10 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-16 lg:gap-8">
+        <div class="lg:w-1/2 text-center lg:text-left">
+            <div class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 mb-8 shadow-xl">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emq-orange opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-slate-300">OGRA Compliant Delivery</span>
+            </div>
+            
+            <h1 class="text-5xl lg:text-[4.5rem] font-extrabold tracking-tight leading-[1.1] mb-6">
+                <span class="block text-white drop-shadow-lg">Next-Gen LPG</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-500 drop-shadow-sm pb-2">
+                    Logistics.
+                </span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                Pioneering <strong class="text-emq-orange font-semibold">Pakistan's 1st AI-powered</strong> cylinder refill notification service. We analyze your usage and send timely alerts regarding your cylinder depletion. Experience precision energy delivery in Rawalpindi & Islamabad.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                <button onclick="scrollToSection('order')" class="h-14 px-8 bg-gradient-to-r from-emq-orange to-orange-600 text-white rounded-2xl font-bold hover:shadow-[0_0_30px_rgba(255,107,0,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center text-lg group border border-orange-500/30">
+                    Book Delivery <i class="fas fa-truck-fast ml-3 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                <button onclick="scrollToSection('products')" class="h-14 px-8 bg-white/5 border border-white/10 backdrop-blur-md text-white rounded-2xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center text-lg group hover:border-white/20">
+                    View Catalog <i class="fas fa-arrow-down ml-3 opacity-70 group-hover:translate-y-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-6 md:gap-8 text-sm text-slate-400 font-medium">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10"><i class="fas fa-shield-alt text-emq-orange text-xs"></i></div>
+                    <span>100% Safe</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10"><i class="fas fa-weight-scale text-emq-orange text-xs"></i></div>
+                    <span>Accurate Weight</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10"><i class="fas fa-wallet text-emq-orange text-xs"></i></div>
+                    <span>COD / Online</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10"><i class="fas fa-robot text-emq-orange text-xs"></i></div>
+                    <span>AI Refill Alerts</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lg:w-1/2 flex justify-center relative w-full perspective-1000">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emq-orange/20 rounded-full blur-[60px] animate-pulse pointer-events-none"></div>
+            
+            <div class="relative z-10 transform hover:scale-[1.03] transition-transform duration-700 ease-out w-full flex justify-center">
+                <img src="https://i.postimg.cc/63Fcfd3V/Customer-Center.png" alt="EMQ Premium LPG Logistics" class="w-full max-w-[480px] lg:max-w-[550px] drop-shadow-[0_25px_50px_rgba(0,0,0,0.5)] object-contain rounded-[2rem] border border-white/10 shadow-2xl">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="products" class="py-24 bg-white relative">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-emq-blue mb-4 tracking-tight">Premium Inventory</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg mb-6">Select an item to view pricing details and add it to your dispatch manifest.</p>
+            
+            <div class="inline-flex items-start md:items-center text-left md:text-center bg-orange-50/80 border border-orange-200 text-orange-800 text-xs md:text-sm px-5 py-3 rounded-xl shadow-sm max-w-3xl">
+                <i class="fas fa-exclamation-triangle mt-0.5 md:mt-0 mr-3 text-emq-orange text-lg"></i>
+                <span class="leading-relaxed"><strong>Disclaimer:</strong> To maintain strict safety standards, the specific brand or color of the delivered cylinder may vary based on the physical condition and brand of the empty cylinder provided during exchange.</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100 group hover:shadow-premium transition-all duration-300">
+                <div class="bg-blue-50/50 h-56 flex items-center justify-center p-6 group-hover:bg-blue-100/50 transition">
+                     <img id="img_refill_6" src="https://i.postimg.cc/sggFbcnJ/EMQ-6kg.png" alt="6kg Domestic Cylinder" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">6kg Domestic</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Compact cylinder perfect for small families, camping, or reliable backup usage.</p>
+                    <button onclick="preSelectProduct('refill_6')" class="w-full border-2 border-emq-blue text-emq-blue font-bold py-3.5 rounded-xl hover:bg-emq-blue hover:text-white transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-3xl overflow-hidden shadow-premium border-2 border-emq-orange transform md:-translate-y-6 relative group">
+                <div class="bg-orange-50/50 h-56 flex items-center justify-center relative p-6 group-hover:bg-orange-100/50 transition">
+                    <span class="absolute top-5 right-5 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider">Hot Seller</span>
+                    <img id="img_refill_10" src="https://i.postimg.cc/mDZZ00g3/10kg-2.jpg" alt="10kg Composite Fiber" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">10kg Composite Fiber</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Premium transparent fiber. Ultra-lightweight, 100% explosion-proof, visible gas level.</p>
+                    <button onclick="preSelectProduct('refill_10')" class="w-full bg-gradient-to-r from-emq-orange to-orange-600 text-white font-bold py-3.5 rounded-xl hover:shadow-glow transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100 group hover:shadow-premium transition-all duration-300">
+                <div class="bg-blue-50/50 h-56 flex items-center justify-center p-6 group-hover:bg-blue-100/50 transition">
+                    <img id="img_refill_11" src="https://i.postimg.cc/WbkLVzjN/EMQ-11-8kg.png" alt="11.8kg Standard Cylinder" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">11.8kg Standard</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">The trusted standard household metal cylinder size optimized for daily kitchen use.</p>
+                    <button onclick="preSelectProduct('refill_11')" class="w-full border-2 border-emq-blue text-emq-blue font-bold py-3.5 rounded-xl hover:bg-emq-blue hover:text-white transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100 group hover:shadow-premium transition-all duration-300">
+                <div class="bg-orange-50/50 h-56 flex items-center justify-center p-6 group-hover:bg-orange-100/50 transition">
+                    <img id="img_refill_13" src="https://i.postimg.cc/3RjpBMb8/13kg-(2).jpg" alt="13kg Composite Fiber" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">13kg Composite Fiber</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">High-capacity Fiber cylinder. Lightweight design, explosion-proof safety built-in.</p>
+                    <button onclick="preSelectProduct('refill_13')" class="w-full border-2 border-emq-blue text-emq-blue font-bold py-3.5 rounded-xl hover:bg-emq-blue hover:text-white transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100 group hover:shadow-premium transition-all duration-300">
+                <div class="bg-blue-50/50 h-56 flex items-center justify-center p-6 group-hover:bg-blue-100/50 transition">
+                     <img id="img_refill_15" src="https://i.postimg.cc/LXGrrFJ1/15kg.png" alt="15kg Commercial Cylinder" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">15kg Commercial</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">High yield design specifically engineered for restaurants and heavy heating demands.</p>
+                    <button onclick="preSelectProduct('refill_15')" class="w-full border-2 border-emq-blue text-emq-blue font-bold py-3.5 rounded-xl hover:bg-emq-blue hover:text-white transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 rounded-3xl overflow-hidden shadow-lg border border-slate-100 group hover:shadow-premium transition-all duration-300">
+                <div class="bg-blue-50/50 h-56 flex items-center justify-center p-6 group-hover:bg-blue-100/50 transition">
+                     <img id="img_refill_45" src="https://i.postimg.cc/jSKhdxmg/EMQ-45.png" alt="45.4kg Industrial Cylinder" class="h-full object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500 mix-blend-multiply">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3 tracking-tight">45.4kg Industrial</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Maximum bulk LPG capacity tailored for commercial units, hotels, and factories.</p>
+                    <button onclick="preSelectProduct('refill_45')" class="w-full border-2 border-emq-blue text-emq-blue font-bold py-3.5 rounded-xl hover:bg-emq-blue hover:text-white transition tracking-wide">Select Refill</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="order" class="py-24 bg-slate-100 relative">
+    <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto glass-panel rounded-[2rem] shadow-premium overflow-hidden flex flex-col lg:flex-row border border-white/60">
+            
+            <div class="lg:w-7/12 p-10 lg:p-12 border-r border-gray-100 bg-white/50">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-extrabold text-emq-blue tracking-tight">Logistics Manifest</h2>
+                    <p class="text-sm text-gray-500 mt-2 font-medium uppercase tracking-wider">Secure Dispatch • Rawalpindi & Islamabad</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-slate-700 text-xs font-bold mb-2 uppercase tracking-wide">Customer Name</label>
+                        <input id="custName" required type="text" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 focus:border-emq-blue transition text-sm bg-white shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 text-xs font-bold mb-2 uppercase tracking-wide">Phone Number</label>
+                        <input id="custPhone" required type="tel" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 focus:border-emq-blue transition text-sm bg-white shadow-sm">
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <label class="block text-slate-700 text-xs font-bold mb-2 uppercase tracking-wide">Delivery Node (Bahria / DHA / Rawat)</label>
+                    <textarea id="custAddress" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 focus:border-emq-blue transition text-sm bg-white shadow-sm leading-relaxed" rows="2" placeholder="House #, Street #, Sector..."></textarea>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8 shadow-sm">
+                    <h3 class="text-sm font-bold text-emq-blue mb-4 uppercase tracking-wider"><i class="fas fa-truck-fast mr-2"></i> Operational Preferences</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-slate-600 text-xs font-bold mb-2">Payment Protocol</label>
+                            <select id="paymentMode" onchange="togglePartialCash()" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 text-sm bg-white">
+                                <option value="Cash" selected>Cash on Delivery</option>
+                                <option value="Online">Online Transfer (Bank/Wallet)</option>
+                                <option value="Split (Cash + Online)">Split (Cash + Online)</option>
+                            </select>
+                        </div>
+                        <div id="partialCashContainer" class="hidden">
+                            <label class="block text-slate-600 text-xs font-bold mb-2">Cash Amount Component</label>
+                            <input id="partialCash" type="number" placeholder="Enter Cash Portion" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 text-sm bg-white">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-600 text-xs font-bold mb-2">Dispatch Type</label>
+                            <select id="deliveryType" onchange="toggleScheduledTime()" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 text-sm bg-white">
+                                <option value="Normal (ASAP)" selected>Normal Horizon (ASAP)</option>
+                                <option value="Scheduled">Scheduled Horizon</option>
+                            </select>
+                        </div>
+                        <div id="scheduledTimeContainer" class="hidden">
+                            <label class="block text-slate-600 text-xs font-bold mb-2">Target Time</label>
+                            <input id="scheduledTime" type="datetime-local" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 text-sm bg-white">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <label class="block text-slate-600 text-xs font-bold mb-2">Driver Instructions</label>
+                        <textarea id="driverNotes" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emq-blue/50 text-sm bg-white" rows="1" placeholder="e.g., Doorbell broken, Leave at gate..."></textarea>
+                    </div>
+                </div>
+
+                <div class="bg-blue
